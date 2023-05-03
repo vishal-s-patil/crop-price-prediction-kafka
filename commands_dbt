@@ -1,0 +1,13 @@
+libraryDependencies += "com.datastax.spark" %% "spark-cassandra-connector" % "3.3.0"
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic crop --from-beginning
+
+bin/kafka-topics.sh --list --bootstr
+
+mongosh
+use store
+db.crop.find()
+
+
+run : spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.3 streaming.py
+
